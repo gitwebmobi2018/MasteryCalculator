@@ -1,0 +1,128 @@
+//
+//  RootViewController.swift
+//  FinacialAnalyzingApp
+//
+//  Created by pei on 2017-05-02.
+//
+//
+
+import UIKit
+import paper_onboarding
+
+class RootViewController: UIViewController {
+
+    @IBOutlet weak var start_btn: UIButton!
+    @IBOutlet weak var onboarding_view: PaperOnboarding!
+    
+    let textfont = UIFont.systemFont(ofSize: 25)
+    let descriptionFont = UIFont.systemFont(ofSize: 17)
+    let textColor = UIColor.white
+    let descriptionColor = UIColor.white
+    
+    let flipBackgroundColor = UIColor(red: 197/255, green: 225/255, blue: 138/255, alpha: 1)
+    let flipImage = UIImage(named: "flipImage.png")
+    let flipIcon = UIImage(named: "Icon.png")
+    
+    let rentalBackgroundColor = UIColor(red: 248/255, green: 221/255, blue: 131/255, alpha: 1)
+    let rentalImage = UIImage(named: "rentalImage.png")
+    let rentalIcon = UIImage(named: "Icon.png")
+    
+    let rehabBackgroundColor = UIColor(red: 176/255, green: 178/255, blue: 249/255, alpha: 1)
+    let rehabImage = UIImage(named: "rehabImage.png")//cashImage.png
+    let rehabIcon = UIImage(named: "Icon.png")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.start_btn.layer.opacity = 0.0
+        start_btn.isEnabled = false
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    func checking() {
+        
+        let dateFormatter = DateFormatter()
+        var timezoneName: String { return TimeZone.current.identifier }
+        dateFormatter.timeZone = TimeZone(identifier: timezoneName)
+        dateFormatter.dateFormat = "MM/dd/yyyy"
+        
+        let currentDate = Date()
+        
+        let toDateStr = "06/13/2017"
+        let toDate = dateFormatter.date(from: toDateStr)
+        
+        if currentDate > toDate! {
+            DataManagement.sharedInstance.expired = true
+        }
+    }
+    @IBAction func startCalculating(_ sender: Any) {
+        
+        performSegue(withIdentifier: "startSegue", sender: nil)
+        
+//        let userDefaults = UserDefaults.standard
+//        let isEnteredWithPWD = userDefaults.string(forKey: "pwd")
+//        if isEnteredWithPWD == "yes" {
+//            
+//        } else {
+//            let alertController = UIAlertController(title: nil, message: "Input Password", preferredStyle: .alert)
+//            alertController.addTextField { ( textField ) in
+//                textField.placeholder = "password"
+//                textField.returnKeyType = .done
+//                textField.isSecureTextEntry = true
+//            }
+//            let actionOK = UIAlertAction(title: "Done", style: .default) { (UIAlertAction) in
+//                if alertController.textFields?[0].text == "Mastery257" {
+//                    self.performSegue(withIdentifier: "startSegue", sender: nil)
+//                    userDefaults.set("yes", forKey: "pwd")
+//                } else if alertController.textFields?[0].text == "" {
+//                    self.presentSubErrorAlert(txt: "Please input password!")
+//                } else {
+//                    self.presentSubErrorAlert(txt: "Inputted password is not correct!")
+//                }
+//            }
+//            alertController.addAction(actionOK)
+//            present(alertController, animated: true, completion: nil)
+//        }
+    }
+    
+    func presentSubErrorAlert(txt: String) {
+        let alertSubController = UIAlertController(title: "Warning!", message: txt, preferredStyle: .alert)
+        let actionSubOK = UIAlertAction(title: "ok", style: .cancel, handler: nil)
+        alertSubController.addAction(actionSubOK)
+        self.present(alertSubController, animated: true, completion: nil)
+    }
+}
+
+extension RootViewController : PaperOnboardingDataSource {
+    func onboardingItemAtIndex(_ index: Int) -> OnboardingItemInfo {
+        return [(flipImage! , "Flipping For A Living", "This is a Max Flip Offer calculator. Helps mastery students put in their expected ARV, rehab costs, carrying, selling costs and profit margin to determine the Max Offer Price. A quick and easy way of running your numbers and pretty accurate guideline when making offers on flips.", flipIcon!, flipBackgroundColor, textColor,  descriptionColor, textfont, descriptionFont),
+                (rentalImage!, "Cash Flow For Life", "This a rental cash flow calculator designed using the refi model to come up with a cash on cash return, monthly cash flow, and Andrew's Ratio.", rentalIcon!, rentalBackgroundColor, textColor, descriptionColor, textfont, descriptionFont),
+                (rehabImage!, "Rehab", "It is designed to help you estimate rehab costs.", rehabIcon!, rehabBackgroundColor, textColor, descriptionColor, textfont, descriptionFont),
+                (rehabIcon!, "", "", rehabIcon!, UIColor.blue, textColor, descriptionColor, textfont, descriptionFont)
+            ][index]
+    }
+    
+    func onboardingItemsCount() -> Int {
+        return 4
+    }
+    func onboardingConfigurationItem(_ item: OnboardingContentViewItem, index: Int) {
+        
+        if index == 3 {
+            UIView.animate(withDuration: 1.3, animations: {
+                self.start_btn.layer.opacity = 1.0
+            })
+            start_btn.isEnabled = true
+            onboarding_view.layer.opacity = 0.5
+        } else {
+            onboarding_view.layer.opacity = 1
+            self.start_btn.layer.opacity = 0.0
+            start_btn.isEnabled = false
+        }
+    }
+}
+

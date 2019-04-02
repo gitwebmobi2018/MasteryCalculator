@@ -1,0 +1,18 @@
+PODS:
+  - ExpandableTableViewController (2.1)
+  - PageMenu (2.0.0)
+  - paper-onboarding (2.2)
+
+DEPENDENCIES:
+  - ExpandableTableViewController
+  - PageMenu
+  - paper-onboarding
+
+SPEC CHECKSUMS:
+  ExpandableTableViewController: 7a97b8cf60f044b588255a01176cafa5ce2b7438
+  PageMenu: 9c38fd7e0d9ef4b1408320f55bb907bbc0e538dc
+  paper-onboarding: 7fcb8f2737edb32bd345d6e890578fff1a073fef
+
+PODFILE CHECKSUM: e5c52e987447b4e9a469eee3c197220626cb9cd3
+
+COCOAPODS: 1.2.1
