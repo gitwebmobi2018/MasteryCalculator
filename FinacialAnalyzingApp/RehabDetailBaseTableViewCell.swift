@@ -55,8 +55,8 @@ class RehabDetailBaseTableViewCell: UITableViewCell, UITextFieldDelegate {
         let toolbarDone = UIToolbar.init()
         toolbarDone.barStyle = UIBarStyle.blackTranslucent
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(hideTextField))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(hideTextField))
         done.tintColor = UIColor.white
         
         let items = NSMutableArray()
@@ -68,7 +68,7 @@ class RehabDetailBaseTableViewCell: UITableViewCell, UITextFieldDelegate {
         quentity_tf.inputAccessoryView = toolbarDone
     }
     
-    func hideTextField() {
+    @objc func hideTextField() {
         quentity_tf.resignFirstResponder()
     }
     

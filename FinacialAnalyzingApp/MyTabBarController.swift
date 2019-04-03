@@ -40,15 +40,15 @@ class MyTabBarController: UITabBarController {
         greenBtn.tintColor = UIColor.clear
         greenBtn.setBackgroundImage(UIImage(named: "green.png"), for: .normal)
         greenBtn.setTitleColor(UIColor.black, for: .normal)
-        greenBtn.setTitleColor(UIColor.white, for: UIControlState.init(rawValue: 1))
-        greenBtn.addTarget(self, action: #selector(toFlip), for: UIControlEvents.init(rawValue: 3))
+        greenBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
+        greenBtn.addTarget(self, action: #selector(toFlip), for: UIControl.Event.init(rawValue: 3))
         
         yellowBtn = UIButton(frame: CGRect(x: DataManagement.sharedInstance.windowSize.width/3, y: 0, width: DataManagement.sharedInstance.windowSize.width/3, height: 49))
-        yellowBtn.setTitle("Rental", for: UIControlState.init(rawValue: 0))
+        yellowBtn.setTitle("Rental", for: UIControl.State.init(rawValue: 0))
         yellowBtn.setBackgroundImage(UIImage(named: "yellow.png"), for: .normal)
         yellowBtn.setTitleColor(UIColor.lightGray, for: .normal)
-        yellowBtn.setTitleColor(UIColor.white, for: UIControlState.init(rawValue: 1))
-        yellowBtn.addTarget(self, action: #selector(toRental), for: UIControlEvents.init(rawValue: 3))
+        yellowBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
+        yellowBtn.addTarget(self, action: #selector(toRental), for: UIControl.Event.init(rawValue: 3))
         yellowBtn.backgroundColor = UIColor.clear
         yellowBtn.tintColor = UIColor.clear
         
@@ -56,15 +56,15 @@ class MyTabBarController: UITabBarController {
         purpleBtn.setTitle("Rehab", for: .normal)
         purpleBtn.setBackgroundImage(UIImage(named: "purple.png"), for: .normal)
         purpleBtn.setTitleColor(UIColor.lightGray, for: .normal)
-        purpleBtn.setTitleColor(UIColor.white, for: UIControlState.init(rawValue: 1))
-        purpleBtn.addTarget(self, action: #selector(toRehab), for: UIControlEvents.init(rawValue: 3))
+        purpleBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
+        purpleBtn.addTarget(self, action: #selector(toRehab), for: UIControl.Event.init(rawValue: 3))
         
         viewTabBar.addSubview(greenBtn)
         viewTabBar.addSubview(yellowBtn)
         viewTabBar.addSubview(purpleBtn)
         self.view.addSubview(viewTabBar)
     }
-    func toFlip() {
+    @objc func toFlip() {
         self.selectedIndex = 0
         greenBtn.setTitleColor(UIColor.black, for: .normal)
         greenBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -73,7 +73,7 @@ class MyTabBarController: UITabBarController {
         purpleBtn.setTitleColor(UIColor.lightGray, for: .normal)
         purpleBtn.titleLabel?.font = UIFont.systemFont(ofSize: 20)
     }
-    func toRental() {
+    @objc func toRental() {
         self.selectedIndex = 1
         yellowBtn.setTitleColor(UIColor.black, for: .normal)
         yellowBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
@@ -82,7 +82,7 @@ class MyTabBarController: UITabBarController {
         purpleBtn.setTitleColor(UIColor.lightGray, for: .normal)
         purpleBtn.titleLabel?.font = UIFont.systemFont(ofSize: 20)
     }
-    func toRehab() {
+    @objc func toRehab() {
         self.selectedIndex = 2
         purpleBtn.setTitleColor(UIColor.black, for: .normal)
         purpleBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)

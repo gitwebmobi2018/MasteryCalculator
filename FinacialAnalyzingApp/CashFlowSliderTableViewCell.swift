@@ -27,8 +27,8 @@ class CashFlowSliderTableViewCell: UITableViewCell, UITextFieldDelegate{
         let toolbarDone = UIToolbar.init()
         toolbarDone.barStyle = UIBarStyle.blackTranslucent
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(hideTextField))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(hideTextField))
         done.tintColor = UIColor.white
         
         let items = NSMutableArray()
@@ -68,7 +68,7 @@ class CashFlowSliderTableViewCell: UITableViewCell, UITextFieldDelegate{
 //        DataManagement.sharedInstance.keyboardHide = true
 //    }
     
-    func showTextField() {
+    @objc func showTextField() {
         DataManagement.sharedInstance.cashSliderCell = self
         slider.isHidden = true
         slider.isEnabled = false
@@ -78,14 +78,14 @@ class CashFlowSliderTableViewCell: UITableViewCell, UITextFieldDelegate{
         textField.isEnabled = true
 
         textField.becomeFirstResponder()
-        textField.clearButtonMode = UITextFieldViewMode.whileEditing
+        textField.clearButtonMode = UITextField.ViewMode.whileEditing
         textField.text = DataManagement.sharedInstance.cash_valueArray[valueIndex]
         
         textField.selectAll(nil)
         DataManagement.sharedInstance.keyboardHide = false
     }
     
-    func hideTextField() {
+    @objc func hideTextField() {
         if textField.text != "" {
             var roundedValue = roundf((textField.text! as NSString).floatValue)
             DataManagement.sharedInstance.cash_valueArray[valueIndex] = "\(Int(roundedValue))"

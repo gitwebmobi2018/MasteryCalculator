@@ -6,8 +6,8 @@ target 'FinacialAnalyzingApp' do
   use_frameworks!
 
   # Pods for FinacialAnalyzingApp
-  pod 'paper-onboarding'
-  pod 'PageMenu'
+  pod 'paper-onboarding', '~> 4.1.0'
+#  pod 'PageMenu'
 #   pod 'LUExpandableTableView'
   pod 'ExpandableTableViewController'
 

@@ -1,0 +1,6 @@
+framework module Pods_FinacialAnalyzingAppTests {
+  umbrella header "Pods-FinacialAnalyzingAppTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

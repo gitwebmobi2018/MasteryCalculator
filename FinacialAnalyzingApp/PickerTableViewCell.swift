@@ -53,10 +53,10 @@ class PickerTableViewCell: UITableViewCell {
         tapGesture.numberOfTapsRequired = 1
         value_lb.addGestureRecognizer(tapGesture)
     }
-    func presentDatePickerView() {
+    @objc func presentDatePickerView() {
         datePicker.frame = CGRect(x: 0, y: parentVC.view.frame.size.height/5*4 - 49, width: parentVC.view.frame.size.width, height: parentVC.view.frame.size.height/5+5)
         datePicker.backgroundColor = UIColor.lightGray
-        datePicker.datePickerMode = UIDatePickerMode.date
+        datePicker.datePickerMode = UIDatePicker.Mode.date
         datePicker.addTarget(self, action: #selector(datePickerValueChanged), for: .valueChanged)
         
         parentVC.datePickerForDismiss = datePicker
@@ -71,7 +71,7 @@ class PickerTableViewCell: UITableViewCell {
         datePicker.date = initialDate!
     }
     
-    func datePickerValueChanged() {
+    @objc func datePickerValueChanged() {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MM/dd/yyyy"
         value_lb.text = dateFormatter.string(for: datePicker.date)

@@ -31,8 +31,8 @@ class RehabDetailViewController: UIViewController, UITableViewDelegate, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardDidShow, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardDidShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(swipeUpAct))
         swipeUp.direction = .up
@@ -57,14 +57,14 @@ class RehabDetailViewController: UIViewController, UITableViewDelegate, UITableV
         // Dispose of any resources that can be recreated.
     }
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             let contentInsets = UIEdgeInsets(top:0.0, left:0.0, bottom:keyboardSize.height - 50, right:0.0)
             tableView.contentInset = contentInsets
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         tableView.contentInset = UIEdgeInsets(top: 0,
                                                left: 0,
                                                bottom: 0,
@@ -119,7 +119,7 @@ class RehabDetailViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: My Event Functions
     
-    func swipeUpAct() {
+    @objc func swipeUpAct() {
         totalViewShowed = true
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
             self.totalViewYConstraint.constant = -15
@@ -128,7 +128,7 @@ class RehabDetailViewController: UIViewController, UITableViewDelegate, UITableV
         }, completion: nil)
     }
     
-    func swipeDownAct() {
+    @objc func swipeDownAct() {
         totalViewShowed = false
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
             

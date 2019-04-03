@@ -34,8 +34,8 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         view.addGestureRecognizer(dismissKeyboardTapGesture)
         view_tableView.addSubview(lb_moreParameters)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardDidShow, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardDidShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         configure_ViewPayResult()
         configure_scrollView()
@@ -76,8 +76,8 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
     
     //MARK: My functions
     
-    func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if !moreParameters {
                 scrollView.isScrollEnabled = true
             }
@@ -86,7 +86,7 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         if moreParameters == false {
             let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             scrollView.contentInset = contentInsets
@@ -100,7 +100,7 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         }
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         if DataManagement.sharedInstance.keyboardHide {
             return
         } else {
@@ -185,11 +185,11 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         }
     }
     func reloadTableView() {
-        UIView.transition(with: tableView, duration: 0.4, options: UIViewAnimationOptions(rawValue: 5), animations: {
+        UIView.transition(with: tableView, duration: 0.4, options: UIView.AnimationOptions(rawValue: 5), animations: {
             self.tableView.reloadData()
         }, completion: nil)
     }
-    func moreParamAct() {
+    @objc func moreParamAct() {
         if lb_moreParameters.text == "More parameters" {
             lb_moreParameters.text = "Less parameters"
             moreParameters = true
@@ -212,7 +212,7 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
             lb_maxOfferValue.text = "$ \(numComma)"
         }
     }
-    func detailAct() {
+    @objc func detailAct() {
         DataManagement.sharedInstance.viewMode_Flip = "Detail"
         performSegue(withIdentifier: "DetailSegue", sender: nil)
     }

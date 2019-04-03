@@ -44,7 +44,7 @@ class CommonTableViewCell: UITableViewCell {
     }
     
     func showSeparator(){
-        self.separatorInset = UIEdgeInsetsMake(0, self.frame.width, 0, 0);
+        self.separatorInset = UIEdgeInsets(top: 0, left: self.frame.width, bottom: 0, right: 0);
         closeArrow()
     }
     

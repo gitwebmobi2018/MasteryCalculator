@@ -38,8 +38,8 @@ class FlipSliderTableViewCell: UITableViewCell, UITextFieldDelegate{
         let toolbarDone = UIToolbar.init()
         toolbarDone.barStyle = UIBarStyle.blackTranslucent
         
-        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.done, target: self, action: #selector(hideTextField))
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItem.Style.done, target: self, action: #selector(hideTextField))
         done.tintColor = UIColor.white
         
         let items = NSMutableArray()
@@ -59,7 +59,7 @@ class FlipSliderTableViewCell: UITableViewCell, UITextFieldDelegate{
     
     //MARK: MyFunctions
     
-    func showTextField() {
+    @objc func showTextField() {
         DataManagement.sharedInstance.flipSubSliderViewCell = self
         slider.isHidden = true
         slider.isEnabled = false
@@ -69,13 +69,13 @@ class FlipSliderTableViewCell: UITableViewCell, UITextFieldDelegate{
         tf_value.isEnabled = true
         
         tf_value.becomeFirstResponder()
-        tf_value.clearButtonMode = UITextFieldViewMode.whileEditing
+        tf_value.clearButtonMode = UITextField.ViewMode.whileEditing
         tf_value.text = DataManagement.sharedInstance.flip_ValueArray[valueIndex]
         tf_value.selectAll(nil)
         
         DataManagement.sharedInstance.keyboardHide = false
     }
-    func hideTextField() {
+    @objc func hideTextField() {
         if tf_value.text != "" {
             let roundedValue = roundf((tf_value.text! as NSString).floatValue)
             DataManagement.sharedInstance.flip_ValueArray[valueIndex] = "\(Int(roundedValue))"

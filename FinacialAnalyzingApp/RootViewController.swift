@@ -33,6 +33,7 @@ class RootViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        onboarding_view.dataSource=self
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -99,19 +100,45 @@ class RootViewController: UIViewController {
 }
 
 extension RootViewController : PaperOnboardingDataSource {
-    func onboardingItemAtIndex(_ index: Int) -> OnboardingItemInfo {
-        return [(flipImage! , "Flipping For A Living", "This is a Max Flip Offer calculator. Helps mastery students put in their expected ARV, rehab costs, carrying, selling costs and profit margin to determine the Max Offer Price. A quick and easy way of running your numbers and pretty accurate guideline when making offers on flips.", flipIcon!, flipBackgroundColor, textColor,  descriptionColor, textfont, descriptionFont),
-                (rentalImage!, "Cash Flow For Life", "This a rental cash flow calculator designed using the refi model to come up with a cash on cash return, monthly cash flow, and Andrew's Ratio.", rentalIcon!, rentalBackgroundColor, textColor, descriptionColor, textfont, descriptionFont),
-                (rehabImage!, "Rehab", "It is designed to help you estimate rehab costs.", rehabIcon!, rehabBackgroundColor, textColor, descriptionColor, textfont, descriptionFont),
-                (rehabIcon!, "", "", rehabIcon!, UIColor.blue, textColor, descriptionColor, textfont, descriptionFont)
-            ][index]
-    }
-    
     func onboardingItemsCount() -> Int {
         return 4
     }
+    
+    func onboardingItem(at index: Int) -> OnboardingItemInfo {
+        return [
+            OnboardingItemInfo(informationImage: flipImage!, title: "Flipping For A Living", description: "This is a Max Flip Offer calculator. Helps mastery students put in their expected ARV, rehab costs, carrying, selling costs and profit margin to determine the Max Offer Price. A quick and easy way of running your numbers and pretty accurate guideline when making offers on flips.", pageIcon: flipIcon!, color: flipBackgroundColor, titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont),
+            OnboardingItemInfo(informationImage: rentalImage!, title: "Cash Flow For Life", description: "This a rental cash flow calculator designed using the refi model to come up with a cash on cash return, monthly cash flow, and Andrew's Ratio.", pageIcon: rentalIcon!, color: rentalBackgroundColor, titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont),
+            OnboardingItemInfo(informationImage: rehabImage!, title: "Rehab", description: "It is designed to help you estimate rehab costs.", pageIcon: rehabIcon!, color: rehabBackgroundColor, titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont),
+            OnboardingItemInfo(informationImage: rehabIcon!, title: "<#T##String#>", description: "<#T##String#>", pageIcon: rehabIcon!, color:UIColor.blue , titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont)
+            
+        ][index]
+      
+//
+    }
+    
+//    func onboardingItem(at index: Int) -> OnboardingItemInfo {
+//        return [(flipImage! , "Flipping For A Living", "This is a Max Flip Offer calculator. Helps mastery students put in their expected ARV, rehab costs, carrying, selling costs and profit margin to determine the Max Offer Price. A quick and easy way of running your numbers and pretty accurate guideline when making offers on flips.", flipIcon!, flipBackgroundColor, textColor,  descriptionColor, textfont, descriptionFont),
+//                (rentalImage!, "Cash Flow For Life", "This a rental cash flow calculator designed using the refi model to come up with a cash on cash return, monthly cash flow, and Andrew's Ratio.", rentalIcon!, rentalBackgroundColor, textColor, descriptionColor, textfont, descriptionFont),
+//                (rehabImage!, "Rehab", "It is designed to help you estimate rehab costs.", rehabIcon!, rehabBackgroundColor, textColor, descriptionColor, textfont, descriptionFont),
+//                (rehabIcon!, "", "", rehabIcon!, UIColor.blue, textColor, descriptionColor, textfont, descriptionFont)
+//            ][index]
+//    }
+    
+//    func onboardingItemAtIndex(_ index: Int) -> OnboardingItemInfo {
+//        return [(flipImage! , "Flipping For A Living", "This is a Max Flip Offer calculator. Helps mastery students put in their expected ARV, rehab costs, carrying, selling costs and profit margin to determine the Max Offer Price. A quick and easy way of running your numbers and pretty accurate guideline when making offers on flips.", flipIcon!, flipBackgroundColor, textColor,  descriptionColor, textfont, descriptionFont),
+//                (rentalImage!, "Cash Flow For Life", "This a rental cash flow calculator designed using the refi model to come up with a cash on cash return, monthly cash flow, and Andrew's Ratio.", rentalIcon!, rentalBackgroundColor, textColor, descriptionColor, textfont, descriptionFont),
+//                (rehabImage!, "Rehab", "It is designed to help you estimate rehab costs.", rehabIcon!, rehabBackgroundColor, textColor, descriptionColor, textfont, descriptionFont),
+//                (rehabIcon!, "", "", rehabIcon!, UIColor.blue, textColor, descriptionColor, textfont, descriptionFont)
+//            ][index]
+//    }
+//    
+//    func onboardingItemsCount() -> Int {
+//        return 4
+//
+//    }
+    
     func onboardingConfigurationItem(_ item: OnboardingContentViewItem, index: Int) {
-        
+        print("testing")
         if index == 3 {
             UIView.animate(withDuration: 1.3, animations: {
                 self.start_btn.layer.opacity = 1.0
@@ -123,6 +150,6 @@ extension RootViewController : PaperOnboardingDataSource {
             self.start_btn.layer.opacity = 0.0
             start_btn.isEnabled = false
         }
-    }
+//    }
 }
-
+}

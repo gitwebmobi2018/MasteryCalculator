@@ -38,8 +38,8 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         let dismissKeyboardTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(dismissKeyboardTapGesture)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:NSNotification.Name.UIKeyboardDidShow, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardDidShowNotification, object: nil);
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         configure_detailComponents()
         configure_scrollView()
@@ -60,7 +60,7 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
     
     //MARK: Configure Functions
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         datePickerForDismiss.removeFromSuperview()
         pickerForDismiss.removeFromSuperview()
         scrollView.contentInset = UIEdgeInsets(top: 0,
@@ -185,7 +185,7 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         view.layer.mask = maskLayer
     }
     func reloadTableView() {
-        UIView.transition(with: tableView, duration: 0.4, options: UIViewAnimationOptions(rawValue: 5), animations: {
+        UIView.transition(with: tableView, duration: 0.4, options: UIView.AnimationOptions(rawValue: 5), animations: {
             self.tableView.reloadData()
         }, completion: nil)
     }
@@ -257,7 +257,7 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
 //        cashMode_lb.backgroundColor = UIColor.clear
 //        loanMode_lb.backgroundColor = UIColor.white
 //    }
-    func moreParametersAct() {
+    @objc func moreParametersAct() {
         datePickerForDismiss.removeFromSuperview()
         if !cash_moreParameters {
             sliderValueChangedRightNow = false
@@ -269,14 +269,14 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         }
         reloadTableView()
     }
-    func detailAct() {
+    @objc func detailAct() {
         datePickerForDismiss.removeFromSuperview()
         DataManagement.sharedInstance.viewMode_Cash = "Detail"
         performSegue(withIdentifier: "DetailSegue", sender: nil)
     }
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         datePickerForDismiss.removeFromSuperview()
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             if !cash_moreParameters {
                 scrollView.isScrollEnabled = true
             }
@@ -285,7 +285,7 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         }
     }
     
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         if cash_moreParameters == false {
             let contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
             scrollView.contentInset = contentInsets
@@ -320,7 +320,7 @@ extension CashMainViewController: UITableViewDataSource {
             cell.initWithData(value: DataManagement.sharedInstance.loan_valueArray[3], title: DataManagement.sharedInstance.loan_input_titleArray[3], parent: self, valueIndex: 3)
             return cell
         } else if indexPath.row == 1 || indexPath.row == 8 || indexPath.row == 11 || indexPath.row == 18 {
-            let cell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+            let cell = UITableViewCell(style: UITableViewCell.CellStyle.value1, reuseIdentifier: "Cell")
             cell.textLabel?.text = DataManagement.sharedInstance.cash_input_titleArray[indexPath.row - 1]
             return cell
         } else if indexPath.row < 18 {
