@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # README #
 
 This README would normally document whatever steps are necessary to get your application up and running.
@@ -27,3 +28,9 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+=======
+# MasteryCalculator
+
+- Swift 5
+- Responsible UI for all iOS device including iPhone X, XR, ...etc.
+>>>>>>> 9b4db7e8266ef17402f4961407c388a385873e9d
