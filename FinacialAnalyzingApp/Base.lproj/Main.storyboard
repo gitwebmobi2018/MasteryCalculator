@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Lsd-da-stA">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Lsd-da-stA">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -1996,7 +1996,7 @@
                                 <rect key="frame" x="112.5" y="318.5" width="150" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="99p-2t-2HB"/>
-                                    <constraint firstAttribute="width" constant="150" id="Ggq-if-Bf1"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="Ggq-if-Bf1"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <state key="normal" title="Let's get started">
@@ -2010,10 +2010,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="d3X-cJ-f5o" firstAttribute="leading" secondItem="aWt-TI-KNl" secondAttribute="leading" id="0he-5Y-DBW"/>
-                            <constraint firstItem="QSj-Nz-Lel" firstAttribute="top" secondItem="d3X-cJ-f5o" secondAttribute="bottom" id="27J-SH-ZNT"/>
                             <constraint firstItem="ERD-Og-XiB" firstAttribute="centerY" secondItem="aWt-TI-KNl" secondAttribute="centerY" id="6kv-Uk-qbr"/>
+                            <constraint firstAttribute="bottom" secondItem="d3X-cJ-f5o" secondAttribute="bottom" id="C4I-af-cuG"/>
                             <constraint firstAttribute="trailing" secondItem="xlH-cY-dWj" secondAttribute="trailing" id="T42-9I-ndW"/>
-                            <constraint firstItem="QSj-Nz-Lel" firstAttribute="top" secondItem="xlH-cY-dWj" secondAttribute="bottom" id="jlP-WJ-IJH"/>
+                            <constraint firstAttribute="bottom" secondItem="xlH-cY-dWj" secondAttribute="bottom" id="WKB-Fu-Lrl"/>
                             <constraint firstItem="xlH-cY-dWj" firstAttribute="top" secondItem="aWt-TI-KNl" secondAttribute="top" id="oox-VQ-vk1"/>
                             <constraint firstItem="ERD-Og-XiB" firstAttribute="centerX" secondItem="aWt-TI-KNl" secondAttribute="centerX" id="pj4-Ch-gbS"/>
                             <constraint firstItem="d3X-cJ-f5o" firstAttribute="top" secondItem="aWt-TI-KNl" secondAttribute="top" id="v91-Ci-Dub"/>
@@ -2115,8 +2115,8 @@
     <resources>
         <image name="1.png" width="750" height="116"/>
         <image name="Mastery_logo.png" width="890" height="115"/>
-        <image name="downArrow.png" width="100" height="100"/>
-        <image name="help.png" width="25" height="25"/>
+        <image name="downArrow.png" width="23.529411315917969" height="23.529411315917969"/>
+        <image name="help.png" width="5.8823528289794922" height="5.8823528289794922"/>
         <image name="masteryBackground.jpg" width="792" height="478"/>
         <image name="rightArrow.png" width="256" height="256"/>
         <image name="whiteupArrow.png" width="512" height="512"/>

@@ -31,10 +31,47 @@ class RootViewController: UIViewController {
     let rehabImage = UIImage(named: "rehabImage.png")//cashImage.png
     let rehabIcon = UIImage(named: "Icon.png")
     
+    
+//    let onboarding = PaperOnboarding()
+//    onboarding.dataSource = self
+//    onboarding.translatesAutoresizingMaskIntoConstraints = false
+//    view.addSubview(onboarding)
+//
+//    // add constraints
+//    for attribute: NSLayoutAttribute in [.Left, .Right, .Top, .Bottom] {
+//    let constraint = NSLayoutConstraint(item: onboarding,
+//    attribute: attribute,
+//    relatedBy: .Equal,
+//    toItem: view,
+//    attribute: attribute,
+//    multiplier: 1,
+//    constant: 0)
+//    view.addConstraint(constraint)
+//    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         onboarding_view.dataSource=self
+        onboarding_view.delegate = self
         // Do any additional setup after loading the view.
+//        onboarding.dataSource = self
+//        onboarding.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(onboarding)
+//
+//        // add constraints
+//        for attribute: NSLayoutConstraint.Attribute in [.left, .right, .top, .bottom] {
+//            let constraint = NSLayoutConstraint(item: onboarding,
+//                                                attribute: attribute,
+//                                                relatedBy: .equal,
+//                                                toItem: view,
+//                                                attribute: attribute,
+//                                                multiplier: 1,
+//                                                constant: 0)
+//            view.addConstraint(constraint)
+//        }
     }
     override func viewWillAppear(_ animated: Bool) {
         
@@ -99,7 +136,7 @@ class RootViewController: UIViewController {
     }
 }
 
-extension RootViewController : PaperOnboardingDataSource {
+extension RootViewController : PaperOnboardingDataSource,PaperOnboardingDelegate {
     func onboardingItemsCount() -> Int {
         return 4
     }
@@ -136,20 +173,19 @@ extension RootViewController : PaperOnboardingDataSource {
 //        return 4
 //
 //    }
-    
-    func onboardingConfigurationItem(_ item: OnboardingContentViewItem, index: Int) {
-        print("testing")
+    func onboardingConfigurationItem(_: OnboardingContentViewItem, index : Int) {
         if index == 3 {
             UIView.animate(withDuration: 1.3, animations: {
                 self.start_btn.layer.opacity = 1.0
             })
             start_btn.isEnabled = true
-            onboarding_view.layer.opacity = 0.5
+            onboarding_view.layer.opacity = 0
         } else {
             onboarding_view.layer.opacity = 1
             self.start_btn.layer.opacity = 0.0
             start_btn.isEnabled = false
         }
-//    }
-}
+    }
+    
+   
 }
