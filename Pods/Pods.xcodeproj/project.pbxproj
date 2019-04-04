@@ -91,7 +91,7 @@
 		578522A3DA15BDDCAD5A98E637517D0A /* ExpandableTableViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ExpandableTableViewController-dummy.m"; sourceTree = "<group>"; };
 		59D249D32BCDF6C3779030F12F06D4EB /* ExpandableTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpandableTableViewController.swift; path = ExpandableTableViewController/Classes/ExpandableTableViewController.swift; sourceTree = "<group>"; };
 		59DD79FD7A08FE807C5F8D32630A9FFD /* Pods-FinacialAnalyzingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FinacialAnalyzingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		5D7332273B720DEB8572434FF4E8E8D5 /* Pods_FinacialAnalyzingAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FinacialAnalyzingAppUITests.framework; path = "Pods-FinacialAnalyzingAppUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D7332273B720DEB8572434FF4E8E8D5 /* Pods_FinacialAnalyzingAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinacialAnalyzingAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DC2034A2E32AE4CF0E2FF44FEC21E0C /* Pods-FinacialAnalyzingAppUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FinacialAnalyzingAppUITests-acknowledgements.plist"; sourceTree = "<group>"; };
 		6873E587670EE07BBEADF0D35F31C280 /* Pods-FinacialAnalyzingApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FinacialAnalyzingApp.debug.xcconfig"; sourceTree = "<group>"; };
 		6AC0F734519B0B502917970A8B162827 /* Pods-FinacialAnalyzingAppTests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FinacialAnalyzingAppTests-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -104,24 +104,24 @@
 		88FAACF6115A3682041C0E47379D2057 /* paper-onboarding.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "paper-onboarding.xcconfig"; sourceTree = "<group>"; };
 		8A6BF2A6183E33CDD4C70BC3C0639756 /* Pods-FinacialAnalyzingApp-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FinacialAnalyzingApp-acknowledgements.markdown"; sourceTree = "<group>"; };
 		8B80E09C640BE47A3308089A3151C0FC /* Pods-FinacialAnalyzingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FinacialAnalyzingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9847E519FB5B02BFCA8E8C7141CF2F90 /* PageViewItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PageViewItem.swift; path = Source/PageView/Item/PageViewItem.swift; sourceTree = "<group>"; };
 		A193E3B8099E64889E72EF01987AFDA0 /* Pods-FinacialAnalyzingAppUITests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FinacialAnalyzingAppUITests-resources.sh"; sourceTree = "<group>"; };
 		A91130904E87F41AFA663A0B4F778E2D /* Pods-FinacialAnalyzingAppTests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-FinacialAnalyzingAppTests-resources.sh"; sourceTree = "<group>"; };
 		ABA6A62DFFADAB4269BA55E99B43B7D5 /* Pods-FinacialAnalyzingAppTests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FinacialAnalyzingAppTests.modulemap"; sourceTree = "<group>"; };
-		AC8AF3091778C38E5C4498FE4696298C /* paper_onboarding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = paper_onboarding.framework; path = "paper-onboarding.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC8AF3091778C38E5C4498FE4696298C /* paper_onboarding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = paper_onboarding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADD2F446A6666E409AC9E2BB3D110C2B /* PaperOnboarding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperOnboarding.swift; path = Source/PaperOnboarding.swift; sourceTree = "<group>"; };
 		AFED992EB8AB26E784A8F6B8467B337F /* ExpandableTableViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ExpandableTableViewController.xcconfig; sourceTree = "<group>"; };
 		B2C541C48135E05A10B1EFDBF20C3468 /* paper-onboarding.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "paper-onboarding.modulemap"; sourceTree = "<group>"; };
-		B8F63F901467E27F30FC79D8EEB0FFEE /* Pods_FinacialAnalyzingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FinacialAnalyzingAppTests.framework; path = "Pods-FinacialAnalyzingAppTests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8F63F901467E27F30FC79D8EEB0FFEE /* Pods_FinacialAnalyzingAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinacialAnalyzingAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBCE2C122828B8090F383F466027934A /* Configuring.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Configuring.swift; path = Source/Helpers/Configuring.swift; sourceTree = "<group>"; };
 		BBFA69B05BCBBDF0A4AF3BEEE1645FD8 /* paper-onboarding-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "paper-onboarding-dummy.m"; sourceTree = "<group>"; };
-		BC2AB3BCB2D45EE342FDDAB5CA38C11C /* Pods_FinacialAnalyzingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_FinacialAnalyzingApp.framework; path = "Pods-FinacialAnalyzingApp.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2AB3BCB2D45EE342FDDAB5CA38C11C /* Pods_FinacialAnalyzingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinacialAnalyzingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E2C39FE6CC455F69AB757D12E0D263 /* Pods-FinacialAnalyzingAppTests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FinacialAnalyzingAppTests-umbrella.h"; sourceTree = "<group>"; };
 		C1969FC774E0A17FB71406CA327878D4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C5D61C477D9EBCFD56B3B70124AA22DE /* ExpandableTableViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ExpandableTableViewController-umbrella.h"; sourceTree = "<group>"; };
 		CDDF58AB22AC6EE101EA907C7C5DC103 /* PaperOnboardingDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PaperOnboardingDelegate.swift; path = Source/PaperOnboardingDelegate.swift; sourceTree = "<group>"; };
-		CE843405D9A69E7034733394B3051B49 /* ExpandableTableViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ExpandableTableViewController.framework; path = ExpandableTableViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE843405D9A69E7034733394B3051B49 /* ExpandableTableViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExpandableTableViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2E91C5D82B9F4F80686680C6F21999F /* Pods-FinacialAnalyzingAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FinacialAnalyzingAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D6DE32C779EF209C9AA5613DDE3CFB7F /* Pods-FinacialAnalyzingAppUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FinacialAnalyzingAppUITests-umbrella.h"; sourceTree = "<group>"; };
 		D6DFF15000AFE2A371BF499E7AFDA808 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -207,7 +207,6 @@
 				6D9044EA2BE72AACB49B84A22983EAC0 /* ExpandableTableViewDelegate.swift */,
 				365D3B294C5BA693ACF8C9AA9E3FCD0C /* Support Files */,
 			);
-			name = ExpandableTableViewController;
 			path = ExpandableTableViewController;
 			sourceTree = "<group>";
 		};
@@ -315,7 +314,6 @@
 				CDDF58AB22AC6EE101EA907C7C5DC103 /* PaperOnboardingDelegate.swift */,
 				E3D7A94C1D0EFCC30C06E986C2985BE3 /* Support Files */,
 			);
-			name = "paper-onboarding";
 			path = "paper-onboarding";
 			sourceTree = "<group>";
 		};
@@ -502,12 +500,21 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
+				TargetAttributes = {
+					9D2F3549E1E9044AB51D36572A7F48A0 = {
+						LastSwiftMigration = 1020;
+					};
+					D21055D18FDE2772B6A748DE4F62DDF5 = {
+						LastSwiftMigration = 1020;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
@@ -672,7 +679,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -704,7 +711,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1004,8 +1011,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 4.2;
 				SYMROOT = "${SRCROOT}/../build";
 			};
@@ -1035,7 +1041,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -1101,7 +1107,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";

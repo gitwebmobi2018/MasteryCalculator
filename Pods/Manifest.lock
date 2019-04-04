@@ -4,7 +4,7 @@ PODS:
 
 DEPENDENCIES:
   - ExpandableTableViewController
-  - paper-onboarding (~> 4.1.0)
+  - paper-onboarding
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -15,6 +15,6 @@ SPEC CHECKSUMS:
   ExpandableTableViewController: 7a97b8cf60f044b588255a01176cafa5ce2b7438
   paper-onboarding: 344780cbb0bfc229cd1862f5b9bba446b23c5185
 
-PODFILE CHECKSUM: d7685aa150cc200da9c96b1dec160600ebdce0fb
+PODFILE CHECKSUM: 903534f503c258c2e6f97dbd3f74b01da8afe1cc
 
 COCOAPODS: 1.5.3
