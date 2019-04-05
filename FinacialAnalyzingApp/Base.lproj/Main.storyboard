@@ -1928,9 +1928,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="N9j-Xx-Ewk" firstAttribute="leading" secondItem="peN-Yc-yK0" secondAttribute="leading" id="6rC-eI-E35"/>
+                            <constraint firstAttribute="bottom" secondItem="N9j-Xx-Ewk" secondAttribute="bottom" constant="49" id="Gnu-He-YQ2"/>
                             <constraint firstItem="N9j-Xx-Ewk" firstAttribute="top" secondItem="EzL-Tz-fnB" secondAttribute="bottom" id="PMh-al-VcR"/>
                             <constraint firstAttribute="trailing" secondItem="N9j-Xx-Ewk" secondAttribute="trailing" id="dSx-hP-Kpo"/>
-                            <constraint firstItem="Fkv-bk-kwH" firstAttribute="top" secondItem="N9j-Xx-Ewk" secondAttribute="bottom" id="jMy-bW-IkT"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KJc-II-ywR">

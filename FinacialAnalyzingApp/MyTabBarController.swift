@@ -74,16 +74,26 @@ class MyTabBarController: UITabBarController {
 //        viewTabBar = UIView(frame: CGRect(x: 0, y: DataManagement.sharedInstance.windowSize.height - 60, width: DataManagement.sharedInstance.windowSize.width, height: 60))
 //
 //        viewTabBar.backgroundColor = UIColor.clear
+        guard let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+         else{
+            print("returning")
+            return
+        }
+            
+        print(bottomPadding)
+
+        
         let stackView = UIStackView(arrangedSubviews: [greenBtn,yellowBtn,purpleBtn])
         stackView.axis = .horizontal
         stackView.translatesAutoresizingMaskIntoConstraints = false
 //        stackView.alignment = .fill
         stackView.distribution = .fillEqually
         view.addSubview(stackView)
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+//        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor+bottomPadding).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        stackView.heightAnchor.constraint(equalToConstant: 40).isActive = true 
+        stackView.heightAnchor.constraint(equalToConstant: 49+bottomPadding).isActive = true
         
 //        greenBtn = UIButton(frame: CGRect(x: 0, y: 0, width: DataManagement.sharedInstance.windowSize.width/3, height: 60))
 //        greenBtn.setTitle("Flip", for: .normal)
