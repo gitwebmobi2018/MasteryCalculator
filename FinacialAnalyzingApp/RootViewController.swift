@@ -146,7 +146,7 @@ extension RootViewController : PaperOnboardingDataSource,PaperOnboardingDelegate
             OnboardingItemInfo(informationImage: flipImage!, title: "Flipping For A Living", description: "This is a Max Flip Offer calculator. Helps mastery students put in their expected ARV, rehab costs, carrying, selling costs and profit margin to determine the Max Offer Price. A quick and easy way of running your numbers and pretty accurate guideline when making offers on flips.", pageIcon: flipIcon!, color: flipBackgroundColor, titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont),
             OnboardingItemInfo(informationImage: rentalImage!, title: "Cash Flow For Life", description: "This a rental cash flow calculator designed using the refi model to come up with a cash on cash return, monthly cash flow, and Andrew's Ratio.", pageIcon: rentalIcon!, color: rentalBackgroundColor, titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont),
             OnboardingItemInfo(informationImage: rehabImage!, title: "Rehab", description: "It is designed to help you estimate rehab costs.", pageIcon: rehabIcon!, color: rehabBackgroundColor, titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont),
-            OnboardingItemInfo(informationImage: rehabIcon!, title: "<#T##String#>", description: "<#T##String#>", pageIcon: rehabIcon!, color:UIColor.blue , titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont)
+            OnboardingItemInfo(informationImage: rehabIcon!, title: "", description: "", pageIcon: rehabIcon!, color:UIColor.blue , titleColor: textColor, descriptionColor: descriptionColor, titleFont: textfont, descriptionFont: descriptionFont)
             
         ][index]
       
@@ -179,10 +179,10 @@ extension RootViewController : PaperOnboardingDataSource,PaperOnboardingDelegate
                 self.start_btn.layer.opacity = 1.0
             })
             start_btn.isEnabled = true
-            onboarding_view.layer.opacity = 0
+            onboarding_view.layer.opacity = 0.5
         } else {
             onboarding_view.layer.opacity = 1
-            self.start_btn.layer.opacity = 0.0
+            self.start_btn.layer.opacity = 0
             start_btn.isEnabled = false
         }
     }
