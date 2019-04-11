@@ -81,7 +81,7 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         detail_lb.layer.shadowOffset = CGSize(width: 0, height: 1)
         detail_lb.layer.shadowOpacity = 1
         detail_lb.layer.shadowRadius = 1
-
+        determineTabelViewHeight()
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -91,8 +91,8 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
 //            tableViewHeight = height + tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: i, inSection: 0) )
 //        }
 //        tableViewHeightLayout.constant = tableViewHeight
-        tableViewHeight = tableView.frame.size.height
-        tableView.reloadData()
+//        tableViewHeight = tableView.frame.size.height
+//        tableView.reloadData()
         print("table view frame is \(tableView.frame.size.height)")
         print("contentiewHeightConstant.constant = \(contentViewHeight.constant)")
 
@@ -109,6 +109,14 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
             if !moreParameters {
                 scrollView.isScrollEnabled = true
             }
+            guard let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+                else{
+                    print("returning")
+                    return
+            }
+            
+            print(bottomPadding)
+
             let contentInsets = UIEdgeInsets(top:0.0, left:0.0, bottom:keyboardSize.height, right:0.0)
             scrollView.contentInset = contentInsets
         }
@@ -137,7 +145,44 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
             DataManagement.sharedInstance.keyboardHide = true
         }
     }
-    
+    func determineTabelViewHeight(){
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("IPHONE 5,5S,5C")
+                tableViewHeight = 214
+            case 1334:
+                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
+                tableViewHeight = 291.5
+//                return CGFloat(Int(291.5)/count)
+            case 1920, 2208:
+                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
+                tableViewHeight = 345
+//                return CGFloat(Int(345)/count)
+            case 2436:
+                print("IPHONE X, IPHONE XS")
+                tableViewHeight = 346.3
+//                return CGFloat(Int(346.3)/count)
+            case 2688:
+                print("IPHONE XS_MAX")
+                tableViewHeight = 412
+//                return CGFloat(Int(412)/count)
+            case 1792:
+                print("IPHONE XR")
+                tableViewHeight = 412
+//                return CGFloat(Int(412)/count)
+            default:
+                
+                print("UNDETERMINED")
+                tableViewHeight = tableView.frame.size.height/6
+//                return CGFloat(Int(tableView.frame.size.height)/6)
+            }
+        }
+        
+        
+        
+    }
     func configure_maxOfferTitle() {
         lb_maxOfferTitle.layer.shadowColor = UIColor.white.cgColor
         lb_maxOfferTitle.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -176,7 +221,7 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
    private func configure_TableView() {
 //        tableView.backgroundColor = .red
         tableView.isScrollEnabled = false
-        tableViewHeight = tableView.frame.size.height
+//        tableViewHeight = tableView.frame.size.height
 //        tableViewHeight = tableView.frame.size.height
 //        print("table view heifht is \(tableViewHeight)")
 //        print("the height of table view is \(tableViewHeight)")
@@ -246,10 +291,11 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
             print(height)
             UIView.animate(withDuration: 0.4) {
                 print("heihg constant is \(self.contentViewHeight.constant)")
-                self.contentViewHeight.constant = self.contentViewHeight.constant + height
+                self.contentViewHeight.constant = self.contentViewHeight.constant + self.tableViewHeight
                 print("tableview height after clicking on more paramters\(self.tableViewHeight) and height constant isx \(self.contentViewHeight.constant)")
-
-                self.scrollView.contentOffset = CGPoint(x: 0, y: Int((height) ))
+//                let contentInsets = UIEdgeInsets(top:0.0, left:0.0, bottom:self.tableViewHeight, right:0.0)
+//                self.scrollView.contentInset = contentInsets
+                self.scrollView.contentOffset = CGPoint(x: 0, y: Int((self.tableViewHeight) ))
                 
             }
 
@@ -276,9 +322,12 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
             UIView.animate(withDuration: 0.4) {
 //                print("tableview height after clicking on less paramters\(self.tableViewHeight)")
                 self.contentViewHeight.constant = self.contentViewHeight.constant - self.tableViewHeight
+                print("current size of tableiew")
+                print(self.tableView.frame.size.height)
                 print("tableview height after clicking on less paramters\(self.tableViewHeight) and height constant isx \(self.contentViewHeight.constant)")
-
-                self.scrollView.contentOffset = CGPoint(x: 0, y: 0 )
+                self.scrollView.contentInset = UIEdgeInsets.zero
+                self.scrollView.contentOffset = CGPoint(x: 0, y: 0  )
+                
 
             }
             
@@ -335,6 +384,41 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
                let count = 6
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("IPHONE 5,5S,5C")
+                return CGFloat(Int(214)/count)
+            case 1334:
+                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
+                return CGFloat(Int(291.5)/count)
+            case 1920, 2208:
+                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
+                return CGFloat(Int(345)/count)
+            case 2436:
+                print("IPHONE X, IPHONE XS")
+                return CGFloat(Int(346.3)/count)
+            case 2688:
+                print("IPHONE XS_MAX")
+
+                return CGFloat(Int(412)/count)
+            case 1792:
+                print("IPHONE XR")
+                return CGFloat(Int(412)/count)
+            default:
+                print("UNDETERMINED")
+                return CGFloat(Int(tableViewHeight)/count)
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+//
         if count == halfrowCount{
             let c = CGFloat(count)
             print("the height of each row is  \(tableViewHeight/c)")
