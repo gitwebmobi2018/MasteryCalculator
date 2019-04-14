@@ -82,6 +82,8 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         detail_lb.layer.shadowOpacity = 1
         detail_lb.layer.shadowRadius = 1
         determineTabelViewHeight()
+        tableView.tableFooterView = UIView()
+
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -254,6 +256,7 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
 //
            
             return halfrowCount
+//            return Int(tableViewHeight/44)
         } else {
             scrollView.isScrollEnabled = true
 //            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: CGFloat(scrollView.frame.size.height + CGFloat((12-(tableViewHeight/44-5))*44)+20))
@@ -383,55 +386,58 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
    // MARK: UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-               let count = 6
-        
-        if UIDevice().userInterfaceIdiom == .phone {
-            switch UIScreen.main.nativeBounds.height {
-            case 1136:
-                print("IPHONE 5,5S,5C")
-                return CGFloat(Int(214)/count)
-            case 1334:
-                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
-                return CGFloat(Int(291.5)/count)
-            case 1920, 2208:
-                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
-                return CGFloat(Int(345)/count)
-            case 2436:
-                print("IPHONE X, IPHONE XS")
-                return CGFloat(Int(346.3)/count)
-            case 2688:
-                print("IPHONE XS_MAX")
+        return 44
+    }
 
-                return CGFloat(Int(412)/count)
-            case 1792:
-                print("IPHONE XR")
-                return CGFloat(Int(412)/count)
-            default:
-                print("UNDETERMINED")
-                return CGFloat(Int(tableViewHeight)/count)
-            }
-        }
-        
-        
-        
-        
-        
-        
-        
+//               let count = 6
 //
-        if count == halfrowCount{
-            let c = CGFloat(count)
-            print("the height of each row is  \(tableViewHeight/c)")
-            return tableViewHeight/c
+//        if UIDevice().userInterfaceIdiom == .phone {
+//            switch UIScreen.main.nativeBounds.height {
+//            case 1136:
+//                print("IPHONE 5,5S,5C")
+//                return CGFloat(Int(214)/count)
+//            case 1334:
+//                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
+//                return CGFloat(Int(291.5)/count)
+//            case 1920, 2208:
+//                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
+//                return CGFloat(Int(345)/count)
+//            case 2436:
+//                print("IPHONE X, IPHONE XS")
+//                return CGFloat(Int(346.3)/count)
+//            case 2688:
+//                print("IPHONE XS_MAX")
+//
+//                return CGFloat(Int(412)/count)
+//            case 1792:
+//                print("IPHONE XR")
+//                return CGFloat(Int(412)/count)
+//            default:
+//                print("UNDETERMINED")
+//                return CGFloat(Int(tableViewHeight)/count)
+//            }
+//        }
+//
+//
+//
+//
+//
+//
+//
+////
+//        if count == halfrowCount{
+//            let c = CGFloat(count)
+//            print("the height of each row is  \(tableViewHeight/c)")
+//            return tableViewHeight/c
+//
+//        }
+//
+//        else{
+//            _ = CGFloat(DataManagement.sharedInstance.flip_flipMax_InputTitleArray.count)
+////            print("table view heght is \(tableViewHeight/count)")
+//            return tableViewHeight/12
+//        }
 
-        }
-
-        else{
-            _ = CGFloat(DataManagement.sharedInstance.flip_flipMax_InputTitleArray.count)
-//            print("table view heght is \(tableViewHeight/count)")
-            return tableViewHeight/12
-        }
-}
 //    func tableView(_ tableView: UITableView,heightForRowAt indexPath:IndexPath) -> CGFloat
 //    {
 //        return UITableView.automaticDimension
@@ -446,7 +452,7 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
 ////    }
     
     
-    
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation

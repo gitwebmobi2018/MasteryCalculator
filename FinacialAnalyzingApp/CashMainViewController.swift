@@ -53,7 +53,7 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         
         determineTabelViewHeight()
 
-        
+        tableView.tableFooterView = UIView()
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -380,49 +380,52 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         // Pass the selected object to the new view controller.
     }
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let count = 6
         
-        if UIDevice().userInterfaceIdiom == .phone {
-            switch UIScreen.main.nativeBounds.height {
-            case 1136:
-                print("IPHONE 5,5S,5C")
-                return CGFloat(Int(214)/count)
-            case 1334:
-                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
-                return CGFloat(Int(291.5)/count)
-            case 1920, 2208:
-                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
-                return CGFloat(Int(345)/count)
-            case 2436:
-                print("IPHONE X, IPHONE XS")
-                return CGFloat(Int(346.3)/count)
-            case 2688:
-                print("IPHONE XS_MAX")
-                
-                return CGFloat(Int(412)/count)
-            case 1792:
-                print("IPHONE XR")
-                return CGFloat(Int(412)/count)
-            default:
-                print("UNDETERMINED")
-                return CGFloat(Int(tableViewHeight)/count)
-            }
-        }
-        
-        if count == 6{
-            let c = CGFloat(count)
-            print("the height of each row is  \(tableViewHeight/c)")
-            return tableViewHeight/c
-            
-        }
-            
-        else{
-            _ = CGFloat(DataManagement.sharedInstance.flip_flipMax_InputTitleArray.count)
-            //            print("table view heght is \(tableViewHeight/count)")
-            return tableViewHeight/12
-        }
-        
+        return 44
     }
+//        let count = 6
+//
+//        if UIDevice().userInterfaceIdiom == .phone {
+//            switch UIScreen.main.nativeBounds.height {
+//            case 1136:
+//                print("IPHONE 5,5S,5C")
+//                return CGFloat(Int(214)/count)
+//            case 1334:
+//                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
+//                return CGFloat(Int(291.5)/count)
+//            case 1920, 2208:
+//                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
+//                return CGFloat(Int(345)/count)
+//            case 2436:
+//                print("IPHONE X, IPHONE XS")
+//                return CGFloat(Int(346.3)/count)
+//            case 2688:
+//                print("IPHONE XS_MAX")
+//
+//                return CGFloat(Int(412)/count)
+//            case 1792:
+//                print("IPHONE XR")
+//                return CGFloat(Int(412)/count)
+//            default:
+//                print("UNDETERMINED")
+//                return CGFloat(Int(tableViewHeight)/count)
+//            }
+//        }
+//
+//        if count == 6{
+//            let c = CGFloat(count)
+//            print("the height of each row is  \(tableViewHeight/c)")
+//            return tableViewHeight/c
+//
+//        }
+//
+//        else{
+//            _ = CGFloat(DataManagement.sharedInstance.flip_flipMax_InputTitleArray.count)
+//            //            print("table view heght is \(tableViewHeight/count)")
+//            return tableViewHeight/12
+//        }
+//
+//    }
 
 }
 extension CashMainViewController: UITableViewDataSource {
