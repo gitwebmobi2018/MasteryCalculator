@@ -383,7 +383,7 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
    // MARK: UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-               let count = 6
+               let count = halfrowCount
         
         if UIDevice().userInterfaceIdiom == .phone {
             switch UIScreen.main.nativeBounds.height {

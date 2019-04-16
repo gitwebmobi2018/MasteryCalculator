@@ -33,6 +33,7 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
     var tableViewHeight : CGFloat = 0.0
     
     var sliderValueChangedRightNow = false
+    var rowCount = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -380,7 +381,7 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         // Pass the selected object to the new view controller.
     }
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let count = 6
+        let count = rowCount
         
         if UIDevice().userInterfaceIdiom == .phone {
             switch UIScreen.main.nativeBounds.height {
