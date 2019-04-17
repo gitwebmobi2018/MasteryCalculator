@@ -14,8 +14,8 @@ class RootViewController: UIViewController {
     @IBOutlet weak var start_btn: UIButton!
     @IBOutlet weak var onboarding_view: PaperOnboarding!
     
-    let textfont = UIFont.systemFont(ofSize: 25)
-    let descriptionFont = UIFont.systemFont(ofSize: 17)
+    let textfont = UIFont(name: "Gotham-Bold.ttf", size: CGFloat(25)) ?? UIFont.systemFont(ofSize: 25)
+    let descriptionFont = UIFont(name: "Gotham-Bold.ttf", size: CGFloat(17)) ?? UIFont.systemFont(ofSize: 17)
     let textColor = UIColor.white
     let descriptionColor = UIColor.white
     

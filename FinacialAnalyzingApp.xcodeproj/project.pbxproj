@@ -48,6 +48,9 @@
 		01E686521ECB82450059102E /* CommonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E686511ECB82450059102E /* CommonTableViewCell.swift */; };
 		01E686541ECB9FB80059102E /* ProjectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E686531ECB9FB80059102E /* ProjectionTableViewCell.swift */; };
 		01E686561ECBA0650059102E /* ProjectionGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01E686551ECBA0650059102E /* ProjectionGridCell.swift */; };
+		1628B18A2266872400250F37 /* gotham-cufonfonts in Resources */ = {isa = PBXBuildFile; fileRef = 1628B1892266872400250F37 /* gotham-cufonfonts */; };
+		1628B18B2266872400250F37 /* gotham-cufonfonts in Resources */ = {isa = PBXBuildFile; fileRef = 1628B1892266872400250F37 /* gotham-cufonfonts */; };
+		1628B18C2266872400250F37 /* gotham-cufonfonts in Resources */ = {isa = PBXBuildFile; fileRef = 1628B1892266872400250F37 /* gotham-cufonfonts */; };
 		27892C95842DBCE95B70880C /* Pods_FinacialAnalyzingAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 796F32CE66C75B3F8093A12D /* Pods_FinacialAnalyzingAppUITests.framework */; };
 		5D729FB2F31ABF5F1DF4E4BE /* Pods_FinacialAnalyzingAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDCE1032FDAC7B4B52C4D751 /* Pods_FinacialAnalyzingAppTests.framework */; };
 		7B5C15631E9BBB120007AE4A /* CashMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B5C15621E9BBB120007AE4A /* CashMainViewController.swift */; };
@@ -124,6 +127,7 @@
 		01E686551ECBA0650059102E /* ProjectionGridCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProjectionGridCell.swift; sourceTree = "<group>"; };
 		01E9B4801EE0845D00324086 /* FinacialAnalyzingApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = FinacialAnalyzingApp.entitlements; sourceTree = "<group>"; };
 		13BA181C1DE5D0745DBF4C78 /* Pods-FinacialAnalyzingAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialAnalyzingAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialAnalyzingAppTests/Pods-FinacialAnalyzingAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		1628B1892266872400250F37 /* gotham-cufonfonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "gotham-cufonfonts"; sourceTree = "<group>"; };
 		3E0FD27929B890D9F3BE666E /* Pods_FinacialAnalyzingApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FinacialAnalyzingApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4880A9CBADD5509D6D6F8495 /* Pods-FinacialAnalyzingAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialAnalyzingAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialAnalyzingAppUITests/Pods-FinacialAnalyzingAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		5D8FDB6285E3CC1B4F111D82 /* Pods-FinacialAnalyzingAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FinacialAnalyzingAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FinacialAnalyzingAppUITests/Pods-FinacialAnalyzingAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -327,6 +331,7 @@
 		7BD17E291E9976FF0053C9B4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1628B1892266872400250F37 /* gotham-cufonfonts */,
 				01976C6F1F64EE5700E96B90 /* rehabImage.png */,
 				01976C701F64EE5700E96B90 /* rentalImage.png */,
 				0117C6C31F3E199A0055E1C1 /* whitedownArrow.png */,
@@ -520,6 +525,7 @@
 				010D32901F3B832A00A7189C /* RehabDetailBaseTableViewCell.xib in Resources */,
 				018614661ED102CA001B5A93 /* Icon.png in Resources */,
 				018890921EC66DD6009DA88F /* yellow.png in Resources */,
+				1628B18A2266872400250F37 /* gotham-cufonfonts in Resources */,
 				01BFDA781EBC08E5004EDA57 /* background_long2.png in Resources */,
 				01BFDA7E1EBC33A3004EDA57 /* rightArrow.png in Resources */,
 				01BFDA7A1EBC2ABC004EDA57 /* background.png in Resources */,
@@ -551,6 +557,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1628B18B2266872400250F37 /* gotham-cufonfonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +565,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1628B18C2266872400250F37 /* gotham-cufonfonts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
