@@ -14,8 +14,8 @@ class RootViewController: UIViewController {
     @IBOutlet weak var start_btn: UIButton!
     @IBOutlet weak var onboarding_view: PaperOnboarding!
     
-    let textfont = UIFont(name: "Gotham-Bold.ttf", size: CGFloat(25)) ?? UIFont.systemFont(ofSize: 25)
-    let descriptionFont = UIFont(name: "Gotham-Bold.ttf", size: CGFloat(17)) ?? UIFont.systemFont(ofSize: 17)
+    let textfont = UIFont(name: "Gotham-Bold", size: CGFloat(25)) ?? UIFont.systemFont(ofSize: 25)
+    let descriptionFont = UIFont(name: "Gotham-Bold", size: CGFloat(17)) ?? UIFont.systemFont(ofSize: 17)
     let textColor = UIColor.white
     let descriptionColor = UIColor.white
     
@@ -56,6 +56,16 @@ class RootViewController: UIViewController {
         
         onboarding_view.dataSource=self
         onboarding_view.delegate = self
+        
+        for family: String in UIFont.familyNames
+        {
+            print(family)
+            for names: String in UIFont.fontNames(forFamilyName: family)
+            {
+                print("== \(names)")
+            }
+        }
+        
         // Do any additional setup after loading the view.
 //        onboarding.dataSource = self
 //        onboarding.translatesAutoresizingMaskIntoConstraints = false
