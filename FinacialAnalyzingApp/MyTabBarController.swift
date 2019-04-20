@@ -25,13 +25,13 @@ class MyTabBarController: UITabBarController {
         greenBtn.setTitle("Flip", for: .normal)
 //        greenBtn.titleLabel?.font = UIFont(.boldSystemFont(ofSize: 20)
         print("the gotham font is \(String(describing: UIFont(name: "Gotham-Black", size: CGFloat(20))))")
-        greenBtn.titleLabel?.font = UIFont(name: "Gotham-Book", size: CGFloat(20))
+        greenBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
 
         greenBtn.backgroundColor = UIColor.clear
         greenBtn.tintColor = UIColor.clear
         greenBtn.setBackgroundImage(UIImage(named: "green.png"), for: .normal)
         greenBtn.setTitleColor(UIColor.black, for: .normal)
-        greenBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
+//        greenBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
         greenBtn.addTarget(self, action: #selector(toFlip), for: UIControl.Event.init(rawValue: 3))
 
         return greenBtn
@@ -40,10 +40,10 @@ class MyTabBarController: UITabBarController {
     var yellowBtn : UIButton = {
         let yellowBtn = UIButton()
         yellowBtn.setTitle("Rental", for: UIControl.State.init(rawValue: 0))
-        yellowBtn.titleLabel?.font = UIFont(name: "Gotham-Book", size: CGFloat(20))
+        yellowBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
         yellowBtn.setBackgroundImage(UIImage(named: "yellow.png"), for: .normal)
         yellowBtn.setTitleColor(UIColor.lightGray, for: .normal)
-        yellowBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
+//        yellowBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
         yellowBtn.addTarget(self, action: #selector(toRental), for: UIControl.Event.init(rawValue: 3))
         yellowBtn.backgroundColor = UIColor.clear
         yellowBtn.tintColor = UIColor.clear
@@ -53,11 +53,11 @@ class MyTabBarController: UITabBarController {
     var purpleBtn : UIButton = {
         let purpleBtn = UIButton()
         purpleBtn.setTitle("Rehab", for: .normal)
-        purpleBtn.titleLabel?.font = UIFont(name: "Gotham-Book", size: CGFloat(20))
+        purpleBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
 
         purpleBtn.setBackgroundImage(UIImage(named: "purple.png"), for: .normal)
         purpleBtn.setTitleColor(UIColor.lightGray, for: .normal)
-        purpleBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
+//        purpleBtn.setTitleColor(UIColor.white, for: UIControl.State.init(rawValue: 1))
         purpleBtn.addTarget(self, action: #selector(toRehab), for: UIControl.Event.init(rawValue: 3))
         
         return purpleBtn
@@ -143,20 +143,20 @@ class MyTabBarController: UITabBarController {
     }
     @objc func toRental() {
         self.selectedIndex = 1
-        greenBtn.setTitleColor(UIColor.black, for: .normal)
+        greenBtn.setTitleColor(UIColor.lightGray, for: .normal)
         greenBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
-        yellowBtn.setTitleColor(UIColor.lightGray, for: .normal)
+        yellowBtn.setTitleColor(UIColor.black, for: .normal)
         yellowBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
         purpleBtn.setTitleColor(UIColor.lightGray, for: .normal)
         purpleBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
     }
     @objc func toRehab() {
         self.selectedIndex = 2
-        greenBtn.setTitleColor(UIColor.black, for: .normal)
+        greenBtn.setTitleColor(UIColor.lightGray, for: .normal)
         greenBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
         yellowBtn.setTitleColor(UIColor.lightGray, for: .normal)
         yellowBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
-        purpleBtn.setTitleColor(UIColor.lightGray, for: .normal)
+        purpleBtn.setTitleColor(UIColor.black, for: .normal)
         purpleBtn.titleLabel?.font = UIFont(name: "Gotham-Bold", size: CGFloat(20))
     }
     /*

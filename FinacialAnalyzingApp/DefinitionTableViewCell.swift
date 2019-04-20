@@ -26,8 +26,11 @@ class DefinitionTableViewCell: UITableViewCell {
 
     public func initWithData(title: String, content: String) {
         title_lb.text = title
+        title_lb.sizeToFit()
+        
         content_lb.text = content
         content_lb.adjustsFontSizeToFitWidth = true
+        content_lb.sizeToFit()
         title_lb.backgroundColor = UIColor.clear
         content_lb.backgroundColor = UIColor.clear
         
