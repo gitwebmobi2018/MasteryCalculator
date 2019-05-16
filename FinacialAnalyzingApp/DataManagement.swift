@@ -25,7 +25,7 @@ class DataManagement: NSObject {
     func addComma(number: Int) -> String{
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
-        return numberFormatter.string(from: NSNumber(value:number))!
+        return numberFormatter.string(from: NSNumber(value:number)) ?? ""
     }
     
     // MARK: Flip Calculator Data - PART 1

@@ -183,7 +183,7 @@ class CashFlowSliderTableViewCell: UITableViewCell, UITextFieldDelegate{
     
     func initWithValueLabel(value: String) {
         
-        let numComma = DataManagement.sharedInstance.addComma(number: Int(value)!)
+        let numComma = DataManagement.sharedInstance.addComma(number: Int(value) ?? 4)
         
         var resultString = "$\(numComma)"
         

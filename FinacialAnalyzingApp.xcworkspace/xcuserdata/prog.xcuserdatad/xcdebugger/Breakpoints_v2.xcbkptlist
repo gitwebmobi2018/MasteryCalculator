@@ -49,38 +49,22 @@
             endingLineNumber = "280"
             landmarkName = "reloadTableView()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "FinacialAnalyzingApp.FlipMainViewController.(reloadTableView in _610417936C13AE86D657EC15F52ADA8B)() -&gt; ()"
-                  moduleName = "FinacialAnalyzingApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/prog/Desktop/MasteryCalculator/FinacialAnalyzingApp/FlipMainViewController.swift"
-                  timestampString = "576708032.033167"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "278"
-                  endingLineNumber = "278"
-                  offsetFromSymbolStart = "46">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in FinacialAnalyzingApp.FlipMainViewController.(reloadTableView in _610417936C13AE86D657EC15F52ADA8B)() -&gt; ()"
-                  moduleName = "FinacialAnalyzingApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/prog/Desktop/MasteryCalculator/FinacialAnalyzingApp/FlipMainViewController.swift"
-                  timestampString = "576708032.036165"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "281"
-                  endingLineNumber = "281"
-                  offsetFromSymbolStart = "54">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "FinacialAnalyzingApp/CashFlowSliderTableViewCell.swift"
+            timestampString = "579718439.3324749"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
+            landmarkName = "initWithData(value:title:parent:value_index:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
