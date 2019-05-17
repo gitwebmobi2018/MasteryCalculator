@@ -61,8 +61,8 @@ class DetailViewController: UIViewController, UITableViewDelegate{
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if DataManagement.sharedInstance.viewMode_Flip == "Definition"{
-            let font  = UIFont(name: "Helvetica", size: 15)
-            let height = 44 + self.heightForView(text: DataManagement.sharedInstance.flip_Definitions_content[indexPath.row], font: font!, width: self.view.frame.size.width - 33)
+            let font  = UIFont(name: "Gotham-Bold", size: 15)
+            let height = 60 + self.heightForView(text: DataManagement.sharedInstance.flip_Definitions_content[indexPath.row], font: font!, width: self.view.frame.size.width - 33)
             return height
         } else {
             return 44

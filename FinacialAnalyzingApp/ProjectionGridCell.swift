@@ -30,16 +30,39 @@ class ProjectionGridCell: UITableViewCell {
     func initWithData(array: [String]) {
         if array.count != 0 {
             initialVlaue_lb.text = array[0]
+            initialVlaue_lb.sizeToFit()
+            initialVlaue_lb.textAlignment = .center
+            
             salePrice_lb.text = array[1]
+            salePrice_lb.sizeToFit()
+            salePrice_lb.textAlignment = .center
+
             sellingCosts_lb.text = array[2]
+            sellingCosts_lb.sizeToFit()
+            sellingCosts_lb.textAlignment = .center
+
+
             netCashFlow_lb.text = array[3]
+            netCashFlow_lb.sizeToFit()
+            netCashFlow_lb.textAlignment = .center
+
+
             profitFromSale_lb.text = array[4]
+            profitFromSale_lb.sizeToFit()
+            profitFromSale_lb.textAlignment = .center
+
+
             totalProfit_lb.text = array[5]
-            let align = NSTextAlignment.right
-            toAlignLabel(align: align)
+            totalProfit_lb.sizeToFit()
+            totalProfit_lb.textAlignment = .center
+
+
+//            let align = NSTextAlignment.right
+//            toAlignLabel(align: align)
+
         } else {
-            let alignment = NSTextAlignment.center
-            toAlignLabel(align: alignment)
+//            let alignment = NSTextAlignment.center
+//            toAlignLabel(align: alignment)
         }
     }
     func toAlignLabel(align:NSTextAlignment) {

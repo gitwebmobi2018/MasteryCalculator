@@ -159,7 +159,7 @@ class RehabDetailViewController: UIViewController, UITableViewDelegate, UITableV
             UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
                 
                 self.showTotalView_btn.setImage(UIImage(named: "whiteupArrow.png"), for: .normal)
-                self.totalViewYConstraint.constant = -120
+                self.totalViewYConstraint.constant = -140
                 self.view.layoutIfNeeded()
             }, completion: nil)
         }

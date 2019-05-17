@@ -25,6 +25,7 @@ class ProjectionTableViewCell: UITableViewCell {
 
     func initWithTableFrame(viewWidth:CGFloat) {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right:tableView.frame.size.width - viewWidth)
+        tableView.sizeToFit()
     }
     
 }

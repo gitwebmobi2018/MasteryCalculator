@@ -7,9 +7,17 @@
 //
 
 import UIKit
+//extension UITableView {
+//    func scrollToBottom(animated: Bool = true) {
+//        let sections = self.numberOfSections
+//        let rows = self.numberOfRows(inSection: sections - 1)
+//        self.scrollToRow(at: NSIndexPath(row: rows - 1, section: sections - 1) as IndexPath, at: .bottom, animated: true)
+//    }
+//}
 
 class FlipMainViewController: UIViewController, UITableViewDelegate {
 
+    @IBOutlet weak var tableViewHeightConstant: NSLayoutConstraint!
     @IBOutlet weak var detailBackgroundImaage: UIImageView!
     @IBOutlet weak var view_payResult: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -22,17 +30,26 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
     @IBOutlet weak var detail_lb: UILabel!
     @IBOutlet weak var detailView: UIView!
     
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    
     var moreParameters = false
     var tableViewHeight : CGFloat = 0.0
+    var halfrowCount:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        print("tableViewHeightConstant.constant = \(tableViewHeightConstant.constant)")
+        print("contentiewHeightConstant.constant = \(contentViewHeight.constant)")
+//        tableView.rowHeight = UITableView.automaticDimension
+//        tableView.estimatedRowHeight = UITableView.automaticDimension
+
         self.navigationItem.title = "Flip Max"
         
         let dismissKeyboardTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(dismissKeyboardTapGesture)
-        view_tableView.addSubview(lb_moreParameters)
+//        view_tableView.addSubview(lb_moreParameters)
+//        scrollView.insertSubview(view_tableView, belowSubview: view_payResult)
+        view.insertSubview(scrollView, belowSubview: view_payResult)
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name:UIResponder.keyboardDidShowNotification, object: nil);
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -64,10 +81,21 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         detail_lb.layer.shadowOffset = CGSize(width: 0, height: 1)
         detail_lb.layer.shadowOpacity = 1
         detail_lb.layer.shadowRadius = 1
+        determineTabelViewHeight()
         
     }
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.tabBarController?.tabBar.tintColor = UIColor.green
+//        var tableViewHeight:CGFloat = 0;
+//        for (var i = tableView(self.tableView , numberOfRowsInSection: 0) - 1; i>0; i-=1 ){
+//            tableViewHeight = height + tableView(self.tableView, heightForRowAtIndexPath: NSIndexPath(forRow: i, inSection: 0) )
+//        }
+//        tableViewHeightLayout.constant = tableViewHeight
+//        tableViewHeight = tableView.frame.size.height
+//        tableView.reloadData()
+        print("table view frame is \(tableView.frame.size.height)")
+        print("contentiewHeightConstant.constant = \(contentViewHeight.constant)")
+
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -81,6 +109,14 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
             if !moreParameters {
                 scrollView.isScrollEnabled = true
             }
+            guard let bottomPadding = UIApplication.shared.keyWindow?.safeAreaInsets.bottom
+                else{
+                    print("returning")
+                    return
+            }
+            
+            print(bottomPadding)
+
             let contentInsets = UIEdgeInsets(top:0.0, left:0.0, bottom:keyboardSize.height, right:0.0)
             scrollView.contentInset = contentInsets
         }
@@ -109,7 +145,44 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
             DataManagement.sharedInstance.keyboardHide = true
         }
     }
-    
+    func determineTabelViewHeight(){
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("IPHONE 5,5S,5C")
+                tableViewHeight = 214
+            case 1334:
+                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
+                tableViewHeight = 291.5
+//                return CGFloat(Int(291.5)/count)
+            case 1920, 2208:
+                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
+                tableViewHeight = 345
+//                return CGFloat(Int(345)/count)
+            case 2436:
+                print("IPHONE X, IPHONE XS")
+                tableViewHeight = 346.3
+//                return CGFloat(Int(346.3)/count)
+            case 2688:
+                print("IPHONE XS_MAX")
+                tableViewHeight = 412
+//                return CGFloat(Int(412)/count)
+            case 1792:
+                print("IPHONE XR")
+                tableViewHeight = 412
+//                return CGFloat(Int(412)/count)
+            default:
+                
+                print("UNDETERMINED")
+                tableViewHeight = tableView.frame.size.height/6
+//                return CGFloat(Int(tableView.frame.size.height)/6)
+            }
+        }
+        
+        
+        
+    }
     func configure_maxOfferTitle() {
         lb_maxOfferTitle.layer.shadowColor = UIColor.white.cgColor
         lb_maxOfferTitle.layer.shadowOffset = CGSize(width: 0, height: 2)
@@ -123,19 +196,19 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         lb_maxOfferValue.layer.shadowRadius = 1
     }
     func configure_scrollView() {
-        scrollView.frame = CGRect(x: 0, y: view_payResult.frame.origin.y + view_payResult.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height-49-(view_payResult.frame.origin.y+view_payResult.frame.size.height))
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+//        scrollView.frame = CGRect(x: 0, y: view_payResult.frame.origin.y + view_payResult.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height-49-(view_payResult.frame.origin.y+view_payResult.frame.size.height))
+//        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollView.frame.size.height)
     }
     
-    func configure_ViewPayResult() {
+   private func configure_ViewPayResult() {
         view_payResult.layer.shadowColor = UIColor.black.cgColor
         view_payResult.layer.shadowRadius = 3
         view_payResult.layer.shadowOffset = CGSize(width: 0.5, height: 2.5)
         view_payResult.layer.shadowOpacity = 0.5
     }
-    func configure_ViewTableView() {
-        
-        view_tableView.frame = CGRect(x: 10, y: 14, width: scrollView.frame.size.width - 20, height: scrollView.frame.size.height - 28)
+   private  func configure_ViewTableView() {
+//        view_tableView.backgroundColor = .clear
+//        view_tableView.frame = CGRect(x: 10, y: 14, width: scrollView.frame.size.width - 20, height: scrollView.frame.size.height - 28)
         
         view_tableView.clipsToBounds = true
         view_tableView.layer.masksToBounds = false
@@ -145,59 +218,121 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         view_tableView.layer.shadowRadius = 3
         view_tableView.layer.shadowOpacity = 0.5
     }
-    func configure_TableView() {
+   private func configure_TableView() {
+//        tableView.backgroundColor = .red
         tableView.isScrollEnabled = false
+//        tableViewHeight = tableView.frame.size.height
+//        tableViewHeight = tableView.frame.size.height
+//        print("table view heifht is \(tableViewHeight)")
+//        print("the height of table view is \(tableViewHeight)")
 //        tableViewHeight = view_tableView.frame.size.height - 100 - 40
-        tableViewHeight = self.view.frame.size.height - 49 - view_payResult.frame.origin.y - view_payResult.frame.size.height - 28 - 100
-        tableView.frame = CGRect(x: 0, y: 60, width: view_tableView.frame.size.width, height: tableViewHeight)
-        tableView.contentSize = CGSize(width: tableView.frame.size.width, height: tableView.frame.size.height)
+//        tableViewHeight = self.view.frame.size.height - 49 - view_payResult.frame.origin.y - view_payResult.frame.size.height - 28 - 100
+//        tableView.frame = CGRect(x: 0, y: 60, width: view_tableView.frame.size.width, height: tableViewHeight)
+//        tableView.contentSize = CGSize(width: tableView.frame.size.width, height: tableView.frame.size.height)
     }
-    func configure_moreParameters() {
-        lb_moreParameters.frame = CGRect(x: view_tableView.frame.size.width/2.0 - lb_moreParameters.frame.size.width/2.0, y: view_tableView.frame.size.height - 40, width: view_tableView.frame.size.width, height: 40)
+    private func configure_moreParameters() {
+        
+//        lb_moreParameters.backgroundColor = .yellow
+//        lb_moreParameters.frame = CGRect(x: view_tableView.frame.size.width/2.0 - lb_moreParameters.frame.size.width/2.0, y: view_tableView.frame.size.height - 40, width: view_tableView.frame.size.width, height: 40)
+        
         lb_moreParameters.layer.cornerRadius = 10
         let tapGesture = UITapGestureRecognizer.init(target: self, action: #selector(moreParamAct))
         tapGesture.numberOfTapsRequired = 1
         lb_moreParameters.addGestureRecognizer(tapGesture)
     }
-    func cellCounts() -> Int {
+   private  func cellCounts() -> Int {
         if moreParameters == false {
             
-            scrollView.contentInset = UIEdgeInsets.zero
-            scrollView.contentOffset = CGPoint(x: 0, y: 0)
-            configure_ViewTableView()
-            lb_moreParameters.frame = CGRect(x: view_tableView.frame.size.width/2.0 - lb_moreParameters.frame.size.width/2.0, y: view_tableView.frame.size.height - 40, width: lb_moreParameters.frame.size.width, height: lb_moreParameters.frame.size.height)
+//            scrollView.contentInset = UIEdgeInsets.zero
+//            scrollView.contentOffset = CGPoint(x: 0, y: 0)
+//            configure_ViewTableView()
+//            lb_moreParameters.frame = CGRect(x: view_tableView.frame.size.width/2.0 - lb_moreParameters.frame.size.width/2.0, y: view_tableView.frame.size.height - 40, width: lb_moreParameters.frame.size.width, height: lb_moreParameters.frame.size.height)
+             halfrowCount = DataManagement.sharedInstance.flip_flipMax_InputTitleArray.count/2
 
             scrollView.isScrollEnabled = false
-            return Int(tableViewHeight/44.0)
+//            print("table view height is \(tableViewHeight) and cell count is \(halfrowCount) and estimated height is \(Int(Int(tableViewHeight)/halfrowCount))")
+//
+           
+            return halfrowCount
         } else {
             scrollView.isScrollEnabled = true
-            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: CGFloat(scrollView.frame.size.height + CGFloat((12-tableViewHeight/44)*44)+20))
-            view_tableView.frame = CGRect(x: 10, y: 14, width: scrollView.frame.size.width - 20, height: scrollView.frame.size.height + CGFloat((12-tableViewHeight/44)*44)-8)
-            lb_moreParameters.frame = CGRect(x: view_tableView.frame.size.width/2.0 - lb_moreParameters.frame.size.width/2.0, y: view_tableView.frame.size.height - 40, width: view_tableView.frame.size.width, height: 40)
+//            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: CGFloat(scrollView.frame.size.height + CGFloat((12-(tableViewHeight/44-5))*44)+20))
+//            view_tableView.frame = CGRect(x: 10, y: 14, width: scrollView.frame.size.width - 20, height: scrollView.frame.size.height + CGFloat(12-(tableViewHeight/44-5)*44)-8)
+//            lb_moreParameters.frame = CGRect(x: view_tableView.frame.size.width/2.0 - lb_moreParameters.frame.size.width/2.0, y: view_tableView.frame.size.height - 40, width: view_tableView.frame.size.width, height: 40)
             
-            tableView.contentSize = CGSize(width: tableView.frame.size.width,
-                                           height: CGFloat(tableViewHeight) + CGFloat((12-tableViewHeight/44)*44))
-            scrollView.contentOffset = CGPoint(x: 0, y: Int((12-tableViewHeight/44) * 44)+20)
-            tableView.frame.size = tableView.contentSize
-            
+//            tableView.contentSize = CGSize(width: tableView.frame.size.width,
+//                                           height: CGFloat(tableViewHeight) + CGFloat((12-(tableViewHeight/44-5))*44))
+//            scrollView.contentOffset = CGPoint(x: 0, y: Int((12-(tableViewHeight/44-5)) * 44)+20)
+////            tableView.frame.size = tableView.contentSize
+//            let indexPath = NSIndexPath(row: self.halfrowCount*2-1 , section: 0)
+//            self.tableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+
             let rowCount = DataManagement.sharedInstance.flip_flipMax_InputTitleArray.count
+            print("row coubnt is \(rowCount)")
+            
             return rowCount
         }
     }
-    func reloadTableView() {
+   private  func reloadTableView() {
+
         UIView.transition(with: tableView, duration: 0.4, options: UIView.AnimationOptions(rawValue: 5), animations: {
-            self.tableView.reloadData()
+           
+                
+          self.tableView.reloadData()
         }, completion: nil)
     }
     @objc func moreParamAct() {
         if lb_moreParameters.text == "More parameters" {
             lb_moreParameters.text = "Less parameters"
             moreParameters = true
-        } else {
+//            scrollView.contentInset = UIEdgeInsets.zero
+//            scrollView.contentOffset = CGPoint(x: 0, y: 0)
+            let height = tableViewHeight
+            print(height)
+            UIView.animate(withDuration: 0.4) {
+                print("heihg constant is \(self.contentViewHeight.constant)")
+                self.contentViewHeight.constant = self.contentViewHeight.constant + self.tableViewHeight
+                print("tableview height after clicking on more paramters\(self.tableViewHeight) and height constant isx \(self.contentViewHeight.constant)")
+//                let contentInsets = UIEdgeInsets(top:0.0, left:0.0, bottom:self.tableViewHeight, right:0.0)
+//                self.scrollView.contentInset = contentInsets
+                self.scrollView.contentOffset = CGPoint(x: 0, y: Int((self.tableViewHeight) ))
+                
+            }
+
+//            let indexPath = NSIndexPath(row: self.halfrowCount*2-1 , section: 0)
+//
+//            self.tableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+            //            tableView.frame.size = CGSize(width: tableView.frame.size.width,
+            
+
+          
+           
+        }
+         else {
             moreParameters = false
             lb_moreParameters.text = "More parameters"
-            tableView.frame.size = CGSize(width: tableView.frame.size.width,
-                                         height: tableView.frame.size.height-CGFloat((12-tableViewHeight/44)*44))
+//             scrollView.contentOffset = CGPoint(x: 0, y:  tableView.frame.size.height)
+//            let scrollPoint = CGPoint(x: 0, y: self.tableView.contentSize.height - self.tableView.frame.size.height)
+//            self.tableView.setContentOffset(scrollPoint, animated: true)
+            
+//            let indexPath = NSIndexPath(row: self.halfrowCount*2-1 , section: 0)
+//
+//            self.tableView.scrollToRow(at: indexPath as IndexPath, at: .bottom, animated: true)
+//            let height = tableViewHeight
+            UIView.animate(withDuration: 0.4) {
+//                print("tableview height after clicking on less paramters\(self.tableViewHeight)")
+                self.contentViewHeight.constant = self.contentViewHeight.constant - self.tableViewHeight
+                print("current size of tableiew")
+                print(self.tableView.frame.size.height)
+                print("tableview height after clicking on less paramters\(self.tableViewHeight) and height constant isx \(self.contentViewHeight.constant)")
+                self.scrollView.contentInset = UIEdgeInsets.zero
+                self.scrollView.contentOffset = CGPoint(x: 0, y: 0  )
+                
+
+            }
+            
+//            tableView.frame.size = CGSize(width: tableView.frame.size.width,
+//                                         height: tableView.frame.size.height-CGFloat((12-(tableViewHeight/44-5))*44))
         }
         reloadTableView()
     }
@@ -245,11 +380,72 @@ class FlipMainViewController: UIViewController, UITableViewDelegate {
         }
     }
 
-    //MARK: UITableViewDelegate
+   // MARK: UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(tableViewHeight/(tableViewHeight/44))
-    }
+               let count = halfrowCount
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("IPHONE 5,5S,5C")
+                return CGFloat(Int(214)/count)
+            case 1334:
+                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
+                return CGFloat(Int(291.5)/count)
+            case 1920, 2208:
+                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
+                return CGFloat(Int(345)/count)
+            case 2436:
+                print("IPHONE X, IPHONE XS")
+                return CGFloat(Int(346.3)/count)
+            case 2688:
+                print("IPHONE XS_MAX")
+
+                return CGFloat(Int(412)/count)
+            case 1792:
+                print("IPHONE XR")
+                return CGFloat(Int(412)/count)
+            default:
+                print("UNDETERMINED")
+                return CGFloat(Int(tableViewHeight)/count)
+            }
+        }
+        
+        
+        
+        
+        
+        
+        
+//
+        if count == halfrowCount{
+            let c = CGFloat(count)
+            print("the height of each row is  \(tableViewHeight/c)")
+            return tableViewHeight/c
+
+        }
+
+        else{
+            _ = CGFloat(DataManagement.sharedInstance.flip_flipMax_InputTitleArray.count)
+//            print("table view heght is \(tableViewHeight/count)")
+            return tableViewHeight/12
+        }
+}
+//    func tableView(_ tableView: UITableView,heightForRowAt indexPath:IndexPath) -> CGFloat
+//    {
+//        return UITableView.automaticDimension
+//    }
+    
+//    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat
+//    {
+//        return tableViewHeight/6
+//    }
+////    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+////        return UITableView.automaticDimension
+////    }
+    
+    
     
     // MARK: - Navigation
 

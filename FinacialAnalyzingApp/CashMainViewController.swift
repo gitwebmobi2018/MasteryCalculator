@@ -23,6 +23,8 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var moreParameters_lb: UILabel!
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+
     
     var datePickerForDismiss = UIDatePicker()
     var pickerForDismiss = UIPickerView()
@@ -31,10 +33,12 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
     var tableViewHeight : CGFloat = 0.0
     
     var sliderValueChangedRightNow = false
+    var rowCount = 6
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        view.insertSubview(scrollView, belowSubview: paymentImageView)
+
         let dismissKeyboardTapGesture = UITapGestureRecognizer.init(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(dismissKeyboardTapGesture)
         
@@ -47,6 +51,9 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         configure_tableView()
         configure_moreParameters()
         configure_ratioValues()
+        
+        determineTabelViewHeight()
+
         
         // Do any additional setup after loading the view.
     }
@@ -73,6 +80,43 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
             DataManagement.sharedInstance.cashHideTextF()
             view.endEditing(true)
             DataManagement.sharedInstance.keyboardHide = true
+        }
+        
+    }
+    
+    func determineTabelViewHeight(){
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("IPHONE 5,5S,5C")
+                tableViewHeight = 214
+            case 1334:
+                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
+                tableViewHeight = 291.5
+            //                return CGFloat(Int(291.5)/count)
+            case 1920, 2208:
+                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
+                tableViewHeight = 345
+            //                return CGFloat(Int(345)/count)
+            case 2436:
+                print("IPHONE X, IPHONE XS")
+                tableViewHeight = 346.3
+            //                return CGFloat(Int(346.3)/count)
+            case 2688:
+                print("IPHONE XS_MAX")
+                tableViewHeight = 412
+            //                return CGFloat(Int(412)/count)
+            case 1792:
+                print("IPHONE XR")
+                tableViewHeight = 412
+            //                return CGFloat(Int(412)/count)
+            default:
+                
+                print("UNDETERMINED")
+                tableViewHeight = tableView.frame.size.height/6
+                //                return CGFloat(Int(tableView.frame.size.height)/6)
+            }
         }
         
     }
@@ -120,17 +164,17 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
         }
     }
     func configure_scrollView() {
-        scrollView.frame = CGRect(x: 0, y: paymentImageView.frame.origin.y + paymentImageView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height-49-(paymentImageView.frame.origin.y+paymentImageView.frame.size.height))
-        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollView.frame.size.height)
-        
-        scrollView.contentInset = UIEdgeInsets.zero
-        scrollView.contentOffset = CGPoint(x: 0, y: 0)
-        
-        scrollView.isScrollEnabled = true
+//        scrollView.frame = CGRect(x: 0, y: paymentImageView.frame.origin.y + paymentImageView.frame.size.height, width: self.view.frame.size.width, height: self.view.frame.size.height-49-(paymentImageView.frame.origin.y+paymentImageView.frame.size.height))
+//        scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: scrollView.frame.size.height)
+//
+//        scrollView.contentInset = UIEdgeInsets.zero
+//        scrollView.contentOffset = CGPoint(x: 0, y: 0)
+//
+//        scrollView.isScrollEnabled = true
     }
     func configure_tableView_View() {
         
-        view_tableView.frame = CGRect(x: 10, y: 14, width: scrollView.frame.size.width - 20, height: scrollView.frame.size.height - 28)
+//        view_tableView.frame = CGRect(x: 10, y: 14, width: scrollView.frame.size.width - 20, height: scrollView.frame.size.height - 28)
         
         view_tableView.clipsToBounds = true
         view_tableView.layer.masksToBounds = false
@@ -142,12 +186,12 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
     }
     func configure_tableView() {
         tableView.isScrollEnabled = false
-        tableViewHeight = self.view.frame.size.height - 49 - paymentImageView.frame.origin.y - paymentImageView.frame.size.height - 28 - 100
-        tableView.frame = CGRect(x: 0, y: 60, width: view_tableView.frame.size.width, height: tableViewHeight)
-        tableView.contentSize = CGSize(width: tableView.frame.size.width, height: tableView.frame.size.height)
+//        tableViewHeight = self.view.frame.size.height - 49 - paymentImageView.frame.origin.y - paymentImageView.frame.size.height - 28 - 100
+//        tableView.frame = CGRect(x: 0, y: 60, width: view_tableView.frame.size.width, height: tableViewHeight)
+//        tableView.contentSize = CGSize(width: tableView.frame.size.width, height: tableView.frame.size.height)
     }
     func configure_moreParameters() {
-        moreParameters_lb.frame = CGRect(x: 0, y: view_tableView.frame.size.height - 40, width: view_tableView.frame.size.width, height: 40)
+//        moreParameters_lb.frame = CGRect(x: 0, y: view_tableView.frame.size.height - 40, width: view_tableView.frame.size.width, height: 40)
         moreParameters_lb.layer.cornerRadius = 10
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(moreParametersAct))
         moreParameters_lb.addGestureRecognizer(tapGesture)
@@ -191,26 +235,28 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
     }
     func cellCounts() -> Int {
         if !cash_moreParameters {
-            scrollView.contentInset = UIEdgeInsets.zero
-            scrollView.contentOffset = CGPoint(x: 0, y: 0)
-            configure_tableView_View()
-            configure_tableView()
-            configure_moreParameters()            
+//            scrollView.contentInset = UIEdgeInsets.zero
+//            scrollView.contentOffset = CGPoint(x: 0, y: 0)
+//            configure_tableView_View()
+//            configure_tableView()
+//            configure_moreParameters()
             scrollView.isScrollEnabled = false
-            return Int(tableViewHeight/44.0)
+            
+//            return Int(tableViewHeight/44.0)
+            return 6
         } else {
             scrollView.isScrollEnabled = true
-            view_tableView.frame = CGRect(x: 10, y: 14, width: scrollView.frame.size.width - 20, height: tableViewHeight + 100 + CGFloat((22-tableViewHeight/44)*44)+20)
-            
-            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: CGFloat(scrollView.frame.size.height + (22-tableViewHeight/44) * 44)+20)
-            configure_moreParameters()
-            
-            tableView.contentSize = CGSize(width: tableView.frame.size.width,
-                                           height: CGFloat(tableViewHeight) + CGFloat((22-tableViewHeight/44)*44))
-            if !sliderValueChangedRightNow {
-                scrollView.contentOffset = CGPoint(x: 0, y: (22-tableViewHeight/44) * 44+20)
-            }
-            tableView.frame.size = tableView.contentSize
+//            view_tableView.frame = CGRect(x: 10, y: 14, width: scrollView.frame.size.width - 20, height: tableViewHeight + 100 + CGFloat((22-tableViewHeight/44)*44)+20)
+//
+//            scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: CGFloat(scrollView.frame.size.height + (22-tableViewHeight/44) * 44)+20)
+//            configure_moreParameters()
+//
+//            tableView.contentSize = CGSize(width: tableView.frame.size.width,
+//                                           height: CGFloat(tableViewHeight) + CGFloat((22-tableViewHeight/44)*44))
+//            if !sliderValueChangedRightNow {
+//                scrollView.contentOffset = CGPoint(x: 0, y: (22-tableViewHeight/44) * 44+20)
+//            }
+//            tableView.frame.size = tableView.contentSize
             
             return 22
         }
@@ -263,9 +309,39 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
             sliderValueChangedRightNow = false
             moreParameters_lb.text = "Less parameters"
             cash_moreParameters = true
+            
+            let height = tableViewHeight
+            print(height)
+            UIView.animate(withDuration: 0.4) {
+                print("heihg constant is \(self.contentViewHeight.constant)")
+                self.contentViewHeight.constant = self.contentViewHeight.constant + 3*self.tableViewHeight-2*(self.tableViewHeight/6)
+                print("tableview height after clicking on more paramters\(self.tableViewHeight) and height constant isx \(self.contentViewHeight.constant)")
+                //                let contentInsets = UIEdgeInsets(top:0.0, left:0.0, bottom:self.tableViewHeight, right:0.0)
+                //                self.scrollView.contentInset = contentInsets
+                self.scrollView.contentOffset = CGPoint(x: 0, y: Int((3*self.tableViewHeight) ))
+                
+            }
+            
+            
+            
+            
         } else {
             cash_moreParameters = false
             moreParameters_lb.text = "More parameters"
+            UIView.animate(withDuration: 0.4) {
+                //                print("tableview height after clicking on less paramters\(self.tableViewHeight)")
+                self.contentViewHeight.constant = self.contentViewHeight.constant - 3*self.tableViewHeight+2*(self.tableViewHeight/6)
+                print("current size of tableiew")
+                print(self.tableView.frame.size.height)
+                print("tableview height after clicking on less paramters\(self.tableViewHeight) and height constant isx \(self.contentViewHeight.constant)")
+                self.scrollView.contentInset = UIEdgeInsets.zero
+                self.scrollView.contentOffset = CGPoint(x: 0, y: 0  )
+                
+                
+            }
+            
+            
+            
         }
         reloadTableView()
     }
@@ -303,6 +379,50 @@ class CashMainViewController: UIViewController, UITableViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    }
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let count = rowCount
+        
+        if UIDevice().userInterfaceIdiom == .phone {
+            switch UIScreen.main.nativeBounds.height {
+            case 1136:
+                print("IPHONE 5,5S,5C")
+                return CGFloat(Int(214)/count)
+            case 1334:
+                print("IPHONE 6,7,8 IPHONE 6S,7S,8S ")
+                return CGFloat(Int(291.5)/count)
+            case 1920, 2208:
+                print("IPHONE 6PLUS, 6SPLUS, 7PLUS, 8PLUS")
+                return CGFloat(Int(345)/count)
+            case 2436:
+                print("IPHONE X, IPHONE XS")
+                return CGFloat(Int(346.3)/count)
+            case 2688:
+                print("IPHONE XS_MAX")
+                
+                return CGFloat(Int(412)/count)
+            case 1792:
+                print("IPHONE XR")
+                return CGFloat(Int(412)/count)
+            default:
+                print("UNDETERMINED")
+                return CGFloat(Int(tableViewHeight)/count)
+            }
+        }
+        
+        if count == 6{
+            let c = CGFloat(count)
+            print("the height of each row is  \(tableViewHeight/c)")
+            return tableViewHeight/c
+            
+        }
+            
+        else{
+            _ = CGFloat(DataManagement.sharedInstance.flip_flipMax_InputTitleArray.count)
+            //            print("table view heght is \(tableViewHeight/count)")
+            return tableViewHeight/12
+        }
+        
     }
 
 }
